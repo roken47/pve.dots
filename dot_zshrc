@@ -1,0 +1,16 @@
+#clear
+#macchina
+
+source $XDG_CONFIG_HOME/zsh/env.zsh || echo "env file missing"
+source $XDG_CONFIG_HOME/zsh/functions.zsh || echo "functions file missing"
+source $XDG_CONFIG_HOME/zsh/aliases.zsh || echo "alias file missing"
+#( hash cargo 2>/dev/null && source $XDG_CONFIG_HOME/zsh/cargo.zsh ) || echo "Cargo is null";
+source $XDG_CONFIG_HOME/zsh/starship.zsh || echo "starship file missing"
+
+# ( hash fzf 2>/dev/null && eval "$(fzf --zsh)" ) || echo "fzf is missing"
+eval "$(zoxide init zsh)" || echo "zoxide is missing"
+eval "$(thefuck --alias)" || echo "thefuck is missing"
+ 
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

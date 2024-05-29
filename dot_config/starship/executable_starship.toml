@@ -1,0 +1,74 @@
+# Starship Configuration with TOML syntax
+
+# Prompt Format
+format = """\
+$time\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+$cmd_duration\
+$character\
+"""
+
+# Modules in [<module-name]
+# format is what is displayed
+add_newline = true
+
+[directory]
+format = '[  $path ]($style)'
+style = 'bright-blue'
+truncation_length = 1
+truncation_symbol = "../"
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = " "
+style = 'fg:#ff0000'
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#FCF392"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[cmd_duration]
+format = "[$duration ]($style)"
+style = "fg:bright-white"
+
+[character]
+success_symbol = '[󰨃](#00FF2E) '
+error_symbol = '[󰨃](#E84D44) '
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:#00FF2E"
+format = '[$time]($style)'
+
+[container]
+disabled = true
+
+
+[username]
+show_always = true
+style_user = "bright-green"
+format = " [$user@]($style)"
+
+[hostname]
+ssh_only = false
+ssh_symbol = ""
+style = "bold green"
+trim_at = "-"
+format = "[$hostname $ssh_symbol]($style)"
+disabled = false
