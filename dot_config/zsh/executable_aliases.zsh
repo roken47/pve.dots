@@ -21,6 +21,7 @@ alias fetch=macchina
 alias src="source ~/.zshrc"
 alias c=clear
 alias top=btop
+alias nala="sudo nala"
 
 # === [ EXA ] ===
 alias ls="exa -x --color=always --sort name --group-directories-first"
