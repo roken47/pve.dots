@@ -13,27 +13,24 @@ _config() {
 
 case $1 in
 
-    nix)
-        sudo hx ~/dev/nixos-conf/configuration.nix
-        ;;
     rc)
-        sudo hx ~/.dotfiles/.zshrc
+        hx ~/.local/share/chezmoi/dot_zshrc
         ;;
     alias)
-        sudo hx ~/.dotfiles/.zsh/aliases.zsh
+        hx ~/.local/share/chezmoi/dot_config/zsh/executable_aliases.zsh
         ;;
     func)
-        sudo hx ~/.dotfiles/.zsh/functions.zsh
+        hx ~/.local/share/chezmoi/dot_config/zsh/executable_functions.zsh
         ;;
     prompt)
-        sudo hx ~/.dotfiles/.config/starship/starship.toml
+        hx ~/.local/share/chezmoi/dot_config/starship/starship.toml
         ;;
     helix)
-        sudo hx ~/.dotfiles/.config/config.toml
+        hx ~/.local/share/chezmoi/dot_config/helix/config.toml
         ;;
     *)
         echo "Invalid option. Options included are:"
-        echo -n "nix, rc, alias, func, prompt, and helix"
+        echo -n "rc, alias, func, prompt, and helix"
         return 1
         ;;
 esac
@@ -60,3 +57,12 @@ fuck () {
                 export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
                 test -n "$TF_CMD" && print -s $TF_CMD
             }
+update () {
+    if [ $1 == "ls" ];then
+        sudo nala update && sudo nala list --upgradable
+    elif [ $1 == "up" ];then
+        sudo nala upgrade
+    else
+        echo "update <ls | up> ls == list updates, up == upgrade"
+    fi
+}
